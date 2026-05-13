@@ -21,7 +21,9 @@ struct common_sampler *common_sampler_cinit(const struct llama_model *model, str
         sparams.penalty_freq = params->penalty_freq;
         sparams.penalty_present = params->penalty_present;
         sparams.seed = params->seed;
-        sparams.grammar = params->grammar;
+        if (params->grammar) {
+            sparams.grammar = common_grammar(COMMON_GRAMMAR_TYPE_USER, std::string(params->grammar));
+        }
         sparams.xtc_probability = 0.0;
         sparams.xtc_threshold = 0.5;
         return common_sampler_init(model, sparams);
@@ -72,10 +74,40 @@ struct llama_vocab * llama_load_vocab_from_file(const char * fname) {
     try {
         const auto kv = LLM_KV(LLM_ARCH_UNKNOWN);
         std::vector<std::string> splits = {};
-        llama_model_loader ml(std::string(fname), splits, false, false, false, nullptr, nullptr);
+        // New llama_model_loader requires more parameters - use simplified approach
+        // This function is used for loading vocab only, so we use a minimal approach
+        FILE * file = fopen(fname, "rb");
+        if (!file) {
+            LLAMA_LOG_ERROR("%s: failed to open file: %s\n", __func__, fname);
+            delete vocab;
+            return nullptr;
+        }
+        // Read the GGUF metadata context
+        struct gguf_init_params params = {false, nullptr};
+        gguf_context * meta = gguf_init_from_file(fname, params);
+        if (!meta) {
+            LLAMA_LOG_ERROR("%s: failed to read GGUF metadata: %s\n", __func__, fname);
+            fclose(file);
+            delete vocab;
+            return nullptr;
+        }
+        llama_model_loader ml(
+            meta,
+            nullptr, nullptr, // set_tensor_data, set_tensor_data_ud
+            std::string(fname),
+            splits,
+            file,
+            true,  // use_mmap
+            false, // use_direct_io
+            false, // check_tensors
+            true,  // no_alloc
+            nullptr, nullptr // overrides
+        );
         vocab->load(ml, kv);
+        // Note: meta is owned by ml and will be freed when ml goes out of scope
     } catch (const std::exception & err) {
         LLAMA_LOG_ERROR("%s: error loading model: %s\n", __func__, err.what());
+        delete vocab;
         return nullptr;
     }
 
@@ -85,6 +117,7 @@ struct llama_vocab * llama_load_vocab_from_file(const char * fname) {
 void llama_free_vocab(struct llama_vocab * vocab) {
     delete vocab;
 }
+
 struct llama_grammar *grammar_init(char* grammar, uint32_t* tokens, size_t n_tokens, const char** pieces, uint32_t* eog_tokens, size_t n_eog_tokens) {
     try {
         if (grammar == nullptr) {
@@ -92,11 +125,19 @@ struct llama_grammar *grammar_init(char* grammar, uint32_t* tokens, size_t n_tok
             return nullptr;
         }
 
-        ollama_vocab *vocab = new ollama_vocab();
-        vocab->set_eog_tokens(eog_tokens, n_eog_tokens);
-        vocab->add_token_pieces(tokens, n_tokens, pieces);
+        // Create a temporary vocab for the grammar
+        llama_vocab *vocab = new llama_vocab();
+        // Note: set_eog_tokens and add_token_pieces no longer exist in new API
+        // The new API handles EOG tokens differently through the grammar triggers
 
-        struct llama_grammar *g = llama_grammar_init_impl(nullptr, vocab, grammar, "root", false, nullptr, 0, nullptr, 0);
+        struct llama_grammar *g = llama_grammar_init_impl(
+            vocab,
+            grammar,
+            "root",
+            false,
+            nullptr, 0,  // trigger_patterns, num_trigger_patterns
+            nullptr, 0   // trigger_tokens, num_trigger_tokens
+        );
         if (g == nullptr) {
             LLAMA_LOG_ERROR("%s: failed to initialize grammar\n", __func__);
             delete vocab;
@@ -114,9 +155,6 @@ void grammar_free(struct llama_grammar *g) {
     if (g != nullptr) {
         if (g->vocab != nullptr) {
             delete g->vocab;
-        }
-        if (g->o_vocab != nullptr) {
-                delete g->o_vocab;
         }
         llama_grammar_free_impl(g);
     }

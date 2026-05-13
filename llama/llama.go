@@ -82,8 +82,8 @@ func EnumerateGPUs() []Devices {
 			C.ggml_backend_dev_get_props(device, &props)
 			ids = append(ids, Devices{
 				DeviceID: ml.DeviceID{
-					ID:      C.GoString(props.id),
-					Library: C.GoString(props.library),
+					ID:      C.GoString(props.device_id),
+					Library: "",
 				},
 				LlamaID: uint64(i),
 			})
@@ -352,7 +352,9 @@ func (m *Model) ApplyLoraFromFile(context *Context, loraPath string, scale float
 
 	err := -1
 	if loraAdapter != nil {
-		err = int(C.llama_set_adapter_lora(context.c, loraAdapter, C.float(scale)))
+		adapters := []*C.struct_llama_adapter_lora{loraAdapter}
+		scales := []C.float{C.float(scale)}
+		err = int(C.llama_set_adapters_lora(context.c, &adapters[0], C.size_t(len(adapters)), &scales[0]))
 	}
 	if err != 0 {
 		return errors.New("error applying lora from file")
@@ -559,15 +561,18 @@ func (c *MtmdContext) MultimodalTokenize(llamaContext *Context, data []byte) ([]
 	defer C.mtmd_input_chunks_free(ic)
 
 	// Initialize an empty text prompt so we can tokenize
-	it := C.mtmd_input_text_init(C.mtmd_default_marker(), true, true)
-	defer C.mtmd_input_text_free(it)
+	it := C.mtmd_input_text{
+		text:           C.mtmd_default_marker(),
+		add_special:    true,
+		parse_special:  true,
+	}
 
 	// Initialize a bitmap with the image data
 	bm := C.mtmd_helper_bitmap_init_from_buf(c.c, (*C.uchar)(unsafe.Pointer(&data[0])), C.size_t(len(data)))
 	defer C.mtmd_bitmap_free(bm)
 
 	// Tokenize the image
-	if C.int32_t(0) != C.mtmd_tokenize(c.c, ic, it, &bm, 1) {
+	if C.int32_t(0) != C.mtmd_tokenize(c.c, ic, &it, &bm, 1) {
 		return nil, errors.New("unable to tokenize mtmd embedding from image")
 	}
 	nChunks := C.mtmd_input_chunks_size(ic)
