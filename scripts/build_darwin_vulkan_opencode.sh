@@ -213,7 +213,21 @@ case "${CMD:-all}" in
         verify
         status ""
         status "🚀 运行方式:"
-        status "  cd dist/darwin-amd64 && OLLAMA_VULKAN=1 ./bin/ollama serve"
+        status "  cd dist/darwin-amd64 && ./start.sh          # 推荐（已包含所有修复）"
+        status "  cd dist/darwin-amd64 && ./bin/ollama serve  # 手动启动"
+        status ""
+        status "⚠️  Intel Mac + AMD GPU + MoltenVK 注意事项:"
+        status "  必需环境变量（已写入 start.sh）:"
+        status "    OLLAMA_VULKAN=1           启用 Vulkan 后端"
+        status "    GGML_VK_DISABLE_F16=1     修复 fp16 精度 bug（矩阵乘法）"
+        status "    OLLAMA_FLASH_ATTENTION=false  修复 Flash Attention fp16 精度 bug"
+        status ""
+        status "  说明:"
+        status "  - qwen2.5:7b 仅需 GGML_VK_DISABLE_F16=1 即可正常输出"
+        status "  - llama3.1:8b 等模型需同时禁用 Flash Attention（着色器内部使用 fp16）"
+        status "  - 代价：fp32 计算比 fp16 慢约 15-20%，禁用 FA 可能进一步降低性能"
+        status "  - 含 bf16 tensor 的模型（gemma3/gemma4/llava 等）在 RDNA2 上不可用"
+        status "  - 纯 LLM 模型（llama3.1:8b、mistral:7b、qwen2.5:7b 等）正常工作"
         ;;
     *)
         error "未知命令: $CMD (可用: cpp, go, clean, all)"
