@@ -1158,7 +1158,7 @@ void write_output_files() {
 
 } // namespace
 
-int main(int argc, char** argv) {
+int vulkan_shaders_gen_main(int argc, char** argv) {
     std::map<std::string, std::string> args;
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];

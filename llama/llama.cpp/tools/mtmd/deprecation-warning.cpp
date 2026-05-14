@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <string>
 
-int main(int argc, char** argv) {
+int deprecation_warning_main(int argc, char** argv) {
     std::setlocale(LC_NUMERIC, "C");
 
     std::string filename = "main";

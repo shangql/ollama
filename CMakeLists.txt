@@ -329,3 +329,46 @@ if(MLX_ENGINE)
         endif()
     endif()
 endif()
+
+# ============================================================
+# Go 主程序构建（仅在 OLLAMA_BUILD_GO=ON 时启用）
+# ============================================================
+if(OLLAMA_BUILD_GO)
+include(cmake/Go.cmake)
+
+# 下载 Go 模块依赖（构建前必须完成）
+ollama_go_mod_download()
+
+# 定义 ollama 主程序构建目标
+# 主入口为 ./cmd/runner（package main）
+set(_go_ldflags "-w -s")
+if(DEFINED ENV{VERSION})
+    string(APPEND _go_ldflags " -X=github.com/ollama/ollama/version.Version=$ENV{VERSION}")
+endif()
+string(APPEND _go_ldflags " -X=github.com/ollama/ollama/server.mode=release")
+
+# macOS 平台：设置 CGO 标志以支持 MoltenVK/Vulkan
+set(_go_cgo_cflags "")
+set(_go_cgo_cxxflags "")
+set(_go_cgo_ldflags "")
+if(APPLE)
+    set(_go_cgo_cflags "-mmacosx-version-min=14.0")
+    set(_go_cgo_cxxflags "-mmacosx-version-min=14.0")
+    set(_go_cgo_ldflags "-mmacosx-version-min=14.0")
+endif()
+
+ollama_add_go_target(
+    TARGET ollama
+    PACKAGE ./cmd/runner
+    OUTPUT ollama
+    DEPENDS go-mod-download
+    LDFLAGS "${_go_ldflags}"
+    CGO_CFLAGS "${_go_cgo_cflags}"
+    CGO_CXXFLAGS "${_go_cgo_cxxflags}"
+    CGO_LDFLAGS "${_go_cgo_ldflags}"
+)
+
+# 定义 Go 清理目标（清理构建产物和 Go 缓存）
+ollama_go_clean()
+
+endif()

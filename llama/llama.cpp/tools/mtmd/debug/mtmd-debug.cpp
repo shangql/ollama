@@ -47,7 +47,7 @@ static void show_additional_info(int /*argc*/, char ** argv) {
     );
 }
 
-int main(int argc, char ** argv) {
+int mtmd_debug_main(int argc, char ** argv) {
     std::setlocale(LC_NUMERIC, "C");
 
     ggml_time_init();

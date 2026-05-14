@@ -122,6 +122,50 @@
         "MLX_CUDA_ARCHITECTURES": "86;89;90;90a;100;103;75-virtual;80-virtual;110-virtual;120-virtual;121-virtual",
         "OLLAMA_RUNNER_DIR": "mlx_cuda_v13"
       }
+    },
+    {
+      "name": "Go",
+      "inherits": [ "Default" ],
+      "cacheVariables": {
+        "OLLAMA_BUILD_GO": "ON",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/dist/darwin-amd64"
+      }
+    },
+    {
+      "name": "Go CPU",
+      "inherits": [ "Go", "CPU" ]
+    },
+    {
+      "name": "Go CUDA 11",
+      "inherits": [ "Go", "CUDA 11" ]
+    },
+    {
+      "name": "Go CUDA 12",
+      "inherits": [ "Go", "CUDA 12" ]
+    },
+    {
+      "name": "Go CUDA 13",
+      "inherits": [ "Go", "CUDA 13" ]
+    },
+    {
+      "name": "Go ROCm 6",
+      "inherits": [ "Go", "ROCm 6" ]
+    },
+    {
+      "name": "Go ROCm 7",
+      "inherits": [ "Go", "ROCm 7" ]
+    },
+    {
+      "name": "Go Vulkan",
+      "inherits": [ "Go", "Vulkan" ]
+    },
+    {
+      "name": "Go MLX",
+      "inherits": [ "Go", "MLX" ]
+    },
+    {
+      "name": "Go MoltenVK",
+      "inherits": [ "Go", "MoltenVK" ]
     }
   ],
   "buildPresets": [
@@ -204,6 +248,61 @@
       "name": "MLX CUDA 13",
       "targets": [ "mlx", "mlxc" ],
       "configurePreset": "MLX CUDA 13"
+    },
+    {
+      "name": "Go",
+      "configurePreset": "Go",
+      "targets": [ "ollama" ]
+    },
+    {
+      "name": "Go CPU",
+      "configurePreset": "Go CPU",
+      "targets": [ "ggml-cpu", "ollama" ]
+    },
+    {
+      "name": "Go CUDA 12",
+      "configurePreset": "Go CUDA 12",
+      "targets": [ "ggml-cuda", "ollama" ]
+    },
+    {
+      "name": "Go ROCm",
+      "configurePreset": "Go ROCm 6",
+      "targets": [ "ggml-hip", "ollama" ]
+    },
+    {
+      "name": "Go Vulkan",
+      "configurePreset": "Go Vulkan",
+      "targets": [ "ggml-vulkan", "ollama" ]
+    },
+    {
+      "name": "Go MoltenVK",
+      "configurePreset": "Go MoltenVK",
+      "targets": [ "ggml-vulkan", "ollama" ]
+    },
+    {
+      "name": "Go CUDA 11",
+      "configurePreset": "Go CUDA 11",
+      "targets": [ "ggml-cuda", "ollama" ]
+    },
+    {
+      "name": "Go CUDA 13",
+      "configurePreset": "Go CUDA 13",
+      "targets": [ "ggml-cuda", "ollama" ]
+    },
+    {
+      "name": "Go ROCm 6",
+      "configurePreset": "Go ROCm 6",
+      "targets": [ "ggml-hip", "ollama" ]
+    },
+    {
+      "name": "Go ROCm 7",
+      "configurePreset": "Go ROCm 7",
+      "targets": [ "ggml-hip", "ollama" ]
+    },
+    {
+      "name": "Go MLX",
+      "configurePreset": "Go MLX",
+      "targets": [ "mlx", "mlxc", "ollama" ]
     }
   ]
 }
