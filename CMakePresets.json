@@ -277,7 +277,7 @@
     {
       "name": "Go MoltenVK",
       "configurePreset": "Go MoltenVK",
-      "targets": [ "ggml-vulkan", "ollama" ]
+      "targets": [ "ggml-vulkan", "ollama_server", "ollama_runner" ]
     },
     {
       "name": "Go CUDA 11",

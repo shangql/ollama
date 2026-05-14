@@ -79,6 +79,14 @@ build_cpp() {
 
             echo "[Vulkan] Install ($ARCH)..."
             cmake --install "build/darwin-$ARCH" --component Vulkan
+
+            # 手动复制 MoltenVK 运行时和 ICD 配置
+            echo "[Vulkan] Copy MoltenVK runtime ($ARCH)..."
+            mkdir -p "$INSTALL_PREFIX/lib/ollama/vulkan/share/vulkan/icd.d"
+            cp "$BUILD_DIR/../moltenvk-sdk/dynamic/dylib/macOS/libMoltenVK.dylib" \
+               "$INSTALL_PREFIX/lib/ollama/vulkan/"
+            cp "$BUILD_DIR/../moltenvk-sdk/dynamic/dylib/macOS/MoltenVK_icd.json" \
+               "$INSTALL_PREFIX/lib/ollama/vulkan/share/vulkan/icd.d/"
         else
             echo "[Vulkan] Skipping - MoltenVK preset not available"
         fi

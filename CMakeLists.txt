@@ -339,8 +339,7 @@ include(cmake/Go.cmake)
 # 下载 Go 模块依赖（构建前必须完成）
 ollama_go_mod_download()
 
-# 定义 ollama 主程序构建目标
-# 主入口为 ./cmd/runner（package main）
+# 定义 Go 构建目标
 set(_go_ldflags "-w -s")
 if(DEFINED ENV{VERSION})
     string(APPEND _go_ldflags " -X=github.com/ollama/ollama/version.Version=$ENV{VERSION}")
@@ -357,9 +356,10 @@ if(APPLE)
     set(_go_cgo_ldflags "-mmacosx-version-min=14.0")
 endif()
 
+# 主服务器二进制（main.go -> cmd.NewCLI -> serve/pull/push 等命令）
 ollama_add_go_target(
-    TARGET ollama
-    PACKAGE ./cmd/runner
+    TARGET ollama_server
+    PACKAGE .
     OUTPUT ollama
     DEPENDS go-mod-download
     LDFLAGS "${_go_ldflags}"
@@ -367,6 +367,49 @@ ollama_add_go_target(
     CGO_CXXFLAGS "${_go_cgo_cxxflags}"
     CGO_LDFLAGS "${_go_cgo_ldflags}"
 )
+
+# Runner 子进程二进制（cmd/runner/main.go -> runner.Execute）
+ollama_add_go_target(
+    TARGET ollama_runner
+    PACKAGE ./cmd/runner
+    OUTPUT ollama-runner
+    DEPENDS go-mod-download
+    LDFLAGS "${_go_ldflags}"
+    CGO_CFLAGS "${_go_cgo_cflags}"
+    CGO_CXXFLAGS "${_go_cgo_cxxflags}"
+    CGO_LDFLAGS "${_go_cgo_ldflags}"
+)
+
+# 安装 Go 主服务器和 runner 二进制
+install(PROGRAMS "${OLLAMA_BUILD_DIR}/ollama"
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+    COMPONENT Go)
+install(PROGRAMS "${OLLAMA_BUILD_DIR}/ollama-runner"
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/ollama
+    COMPONENT Go)
+
+# 将 Vulkan/MoltenVK 运行时 dylib 也安装到 bin/（与 ollama-runner 同目录）
+# ollama-runner 的 rpath 为 @loader_path，期望 libggml-vulkan.so 和依赖的 dylib 在同一目录
+# 主安装仍在 OLLAMA_INSTALL_DIR (lib/ollama/vulkan/)，此处额外复制到 bin/
+if(Vulkan_FOUND AND APPLE)
+    # ggml-base dylib 位于 OLLAMA_BUILD_DIR，MoltenVK 位于 SDK 动态库目录
+    set(_moltenvk_dylib "${CMAKE_BINARY_DIR}/moltenvk-sdk/dynamic/dylib/macOS/libMoltenVK.dylib")
+    install(FILES
+        "${_moltenvk_dylib}"
+        "${OLLAMA_BUILD_DIR}/libggml-base.0.0.0.dylib"
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+        COMPONENT Go)
+    # 创建符号链接: libggml-base.dylib -> libggml-base.0.0.0.dylib, libggml-base.0.dylib -> libggml-base.0.0.0.dylib
+    install(CODE "
+        set(_bin \"\${CMAKE_INSTALL_PREFIX}/bin\")
+        execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink
+            \"libggml-base.0.0.0.dylib\" \"libggml-base.dylib\"
+            WORKING_DIRECTORY \"\${_bin}\")
+        execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink
+            \"libggml-base.0.0.0.dylib\" \"libggml-base.0.dylib\"
+            WORKING_DIRECTORY \"\${_bin}\")
+    " COMPONENT Go)
+endif()
 
 # 定义 Go 清理目标（清理构建产物和 Go 缓存）
 ollama_go_clean()

@@ -44,6 +44,9 @@ var LibOllamaPath string = func() string {
 		// build paths for development
 		filepath.Join(filepath.Dir(exe), "build", "lib", "ollama"),
 		filepath.Join(cwd, "build", "lib", "ollama"),
+
+		// distribution paths on macOS (lib/ollama alongside exe)
+		filepath.Join(filepath.Dir(exe), "lib", "ollama"),
 	}
 
 	for _, p := range paths {

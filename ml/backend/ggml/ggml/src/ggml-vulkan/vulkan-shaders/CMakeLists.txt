@@ -29,3 +29,9 @@ add_executable(${TARGET} vulkan-shaders-gen.cpp)
 install(TARGETS ${TARGET} RUNTIME)
 target_compile_features(${TARGET} PRIVATE cxx_std_17)
 target_link_libraries(vulkan-shaders-gen PUBLIC Threads::Threads)
+
+if(APPLE)
+    set_target_properties(${TARGET} PROPERTIES
+        LINK_FLAGS "-e __Z23vulkan_shaders_gen_mainiPPc"
+    )
+endif()
