@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/sql/GitHub/ollama/build/cmake_install.cmake",
+		"/Users/sql/GitHub/ollama/build/ml/backend/ggml/ggml/src/cmake_install.cmake",
+		"/Users/sql/GitHub/ollama/build/ml/backend/ggml/ggml/src/ggml-cpu/cmake_install.cmake",
+		"/Users/sql/GitHub/ollama/build/ml/backend/ggml/ggml/src/ggml-vulkan/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

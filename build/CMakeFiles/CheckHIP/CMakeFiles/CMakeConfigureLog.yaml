@@ -1,0 +1,501 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/usr/local/opt/go/libexec/bin/"
+      - "/Users/sql/.rd/bin/"
+      - "/opt/homebrew/opt/coreutils/libexec/gnubin/"
+      - "/Users/sql/.jenv/shims/"
+      - "/Users/sql/.jenv/bin/"
+      - "/Users/sql/Opt/apache-maven-3.6.3/bin/"
+      - "/Users/sql/.nvm/versions/node/v24.13.0/bin/"
+      - "/usr/local/bin/"
+      - "/usr/local/sbin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin/"
+      - "/Users/sql/.local/bin/"
+      - "/Users/sql/.opencode/bin/"
+    searched_directories:
+      - "/usr/local/opt/go/libexec/bin/uname"
+      - "/Users/sql/.rd/bin/uname"
+      - "/opt/homebrew/opt/coreutils/libexec/gnubin/uname"
+      - "/Users/sql/.jenv/shims/uname"
+      - "/Users/sql/.jenv/bin/uname"
+      - "/Users/sql/Opt/apache-maven-3.6.3/bin/uname"
+      - "/Users/sql/.nvm/versions/node/v24.13.0/bin/uname"
+      - "/usr/local/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/Library/Frameworks/Python.framework/Versions/3.12/bin/uname"
+      - "/System/Cryptexes/App/usr/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/opt/go/libexec/bin"
+        - "/Users/sql/.rd/bin"
+        - "/opt/homebrew/opt/coreutils/libexec/gnubin"
+        - "/Users/sql/.jenv/shims"
+        - "/Users/sql/.jenv/bin"
+        - "/Users/sql/Opt/apache-maven-3.6.3/bin"
+        - "/Users/sql/.nvm/versions/node/v24.13.0/bin"
+        - "/usr/local/bin"
+        - "/usr/local/sbin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.opencode/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      The system is: Darwin - 23.6.0 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:71 (_cmake_find_compiler)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "program"
+    variable: "CMAKE_HIP_COMPILER"
+    description: "HIP compiler"
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang++"
+    candidate_directories:
+      - "/usr/bin/"
+    found: "/usr/bin/clang++"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/opt/go/libexec/bin"
+        - "/Users/sql/.rd/bin"
+        - "/opt/homebrew/opt/coreutils/libexec/gnubin"
+        - "/Users/sql/.jenv/shims"
+        - "/Users/sql/.jenv/bin"
+        - "/Users/sql/Opt/apache-maven-3.6.3/bin"
+        - "/Users/sql/.nvm/versions/node/v24.13.0/bin"
+        - "/usr/local/bin"
+        - "/usr/local/sbin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.opencode/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:95 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the HIP compiler is NVIDIA using "" did not match "nvcc: [^
+      ]+ Cuda compiler driver":
+      Apple clang version 16.0.0 (clang-1600.0.26.6)
+      Target: x86_64-apple-darwin23.6.0
+      Thread model: posix
+      InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1290 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:95 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the HIP compiler is Clang using "" matched "(clang version)":
+      Apple clang version 16.0.0 (clang-1600.0.26.6)
+      Target: x86_64-apple-darwin23.6.0
+      Thread model: posix
+      InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeHIPCompilerId.hip.in"
+    candidate_directories:
+      - "/usr/local/share/cmake/Modules/"
+      - "/Users/sql/GitHub/ollama/cmake/"
+      - "/Users/sql/GitHub/ollama/"
+    found: "/usr/local/share/cmake/Modules/CMakeHIPCompilerId.hip.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/opt/go/libexec/bin"
+        - "/Users/sql/.rd/bin"
+        - "/opt/homebrew/opt/coreutils/libexec/gnubin"
+        - "/Users/sql/.jenv/shims"
+        - "/Users/sql/.jenv/bin"
+        - "/Users/sql/Opt/apache-maven-3.6.3/bin"
+        - "/Users/sql/.nvm/versions/node/v24.13.0/bin"
+        - "/usr/local/bin"
+        - "/usr/local/sbin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.opencode/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the HIP compiler identification source file "CMakeHIPCompilerId.hip" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -v 
+      
+      The output was:
+      1
+      Apple clang version 16.0.0 (clang-1600.0.26.6)
+      Target: x86_64-apple-darwin23.6.0
+      Thread model: posix
+      InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+      clang++: error: cannot find ROCm device library; provide its path via '--rocm-path' or '--rocm-device-lib-path', or pass '-nogpulib' to build without ROCm device library
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeHIPCompilerId.hip.in"
+    candidate_directories:
+      - "/usr/local/share/cmake/Modules/"
+      - "/Users/sql/GitHub/ollama/cmake/"
+      - "/Users/sql/GitHub/ollama/"
+    found: "/usr/local/share/cmake/Modules/CMakeHIPCompilerId.hip.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/opt/go/libexec/bin"
+        - "/Users/sql/.rd/bin"
+        - "/opt/homebrew/opt/coreutils/libexec/gnubin"
+        - "/Users/sql/.jenv/shims"
+        - "/Users/sql/.jenv/bin"
+        - "/Users/sql/Opt/apache-maven-3.6.3/bin"
+        - "/Users/sql/.nvm/versions/node/v24.13.0/bin"
+        - "/usr/local/bin"
+        - "/usr/local/sbin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.opencode/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the HIP compiler identification source file "CMakeHIPCompilerId.hip" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      clang++: error: cannot find ROCm device library; provide its path via '--rocm-path' or '--rocm-device-lib-path', or pass '-nogpulib' to build without ROCm device library
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeHIPCompilerId.hip.in"
+    candidate_directories:
+      - "/usr/local/share/cmake/Modules/"
+      - "/Users/sql/GitHub/ollama/cmake/"
+      - "/Users/sql/GitHub/ollama/"
+    found: "/usr/local/share/cmake/Modules/CMakeHIPCompilerId.hip.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/opt/go/libexec/bin"
+        - "/Users/sql/.rd/bin"
+        - "/opt/homebrew/opt/coreutils/libexec/gnubin"
+        - "/Users/sql/.jenv/shims"
+        - "/Users/sql/.jenv/bin"
+        - "/Users/sql/Opt/apache-maven-3.6.3/bin"
+        - "/Users/sql/.nvm/versions/node/v24.13.0/bin"
+        - "/usr/local/bin"
+        - "/usr/local/sbin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.opencode/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the HIP compiler identification source file "CMakeHIPCompilerId.hip" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags: -v 
+      
+      The output was:
+      1
+      Apple clang version 16.0.0 (clang-1600.0.26.6)
+      Target: x86_64-apple-darwin23.6.0
+      Thread model: posix
+      InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+      clang++: error: cannot find ROCm device library; provide its path via '--rocm-path' or '--rocm-device-lib-path', or pass '-nogpulib' to build without ROCm device library
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeHIPCompilerId.hip.in"
+    candidate_directories:
+      - "/usr/local/share/cmake/Modules/"
+      - "/Users/sql/GitHub/ollama/cmake/"
+      - "/Users/sql/GitHub/ollama/"
+    found: "/usr/local/share/cmake/Modules/CMakeHIPCompilerId.hip.in"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/opt/go/libexec/bin"
+        - "/Users/sql/.rd/bin"
+        - "/opt/homebrew/opt/coreutils/libexec/gnubin"
+        - "/Users/sql/.jenv/shims"
+        - "/Users/sql/.jenv/bin"
+        - "/Users/sql/Opt/apache-maven-3.6.3/bin"
+        - "/Users/sql/.nvm/versions/node/v24.13.0/bin"
+        - "/usr/local/bin"
+        - "/usr/local/sbin"
+        - "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/Users/sql/Library/Java/JavaVirtualMachines/azul-21.0.8/Contents/Home/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.local/bin"
+        - "/Users/sql/.opencode/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Compiling the HIP compiler identification source file "CMakeHIPCompilerId.hip" failed.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      clang++: error: cannot find ROCm device library; provide its path via '--rocm-path' or '--rocm-device-lib-path', or pass '-nogpulib' to build without ROCm device library
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      clang++: error: cannot find HIP runtime; provide its path via '--rocm-path', or pass '-nogpuinc' to build without HIP runtime
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the HIP compiler is NVIDIA using "" did not match "nvcc: [^
+      ]+ Cuda compiler driver":
+      clang++: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the HIP compiler is Clang using "" did not match "(clang version)":
+      clang++: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the HIP compiler is NVIDIA using "" did not match "nvcc: [^
+      ]+ Cuda compiler driver":
+      clang++: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1303 (message)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineCompilerId.cmake:86 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/usr/local/share/cmake/Modules/CMakeDetermineHIPCompiler.cmake:159 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:13 (project)"
+    message: |
+      Checking whether the HIP compiler is Clang using "" did not match "(clang version)":
+      clang++: error: no input files
+...

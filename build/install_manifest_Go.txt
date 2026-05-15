@@ -1,0 +1,4 @@
+/Users/sql/GitHub/ollama/dist/darwin-amd64/bin/ollama
+/Users/sql/GitHub/ollama/dist/darwin-amd64/bin/ollama-runner
+/Users/sql/GitHub/ollama/dist/darwin-amd64/bin/ollama
+/Users/sql/GitHub/ollama/dist/darwin-amd64/lib/ollama/ollama-runner
