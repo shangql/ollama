@@ -221,6 +221,7 @@ case "${CMD:-all}" in
         status "    OLLAMA_VULKAN=1           启用 Vulkan 后端"
         status "    GGML_VK_DISABLE_F16=1     修复 fp16 精度 bug（矩阵乘法）"
         status "    OLLAMA_FLASH_ATTENTION=false  修复 Flash Attention fp16 精度 bug"
+        status "    OLLAMA_CONTEXT_LENGTH=32768   上下文窗口（8GB VRAM 默认仅 4096，CC 等客户端会极慢）"
         status ""
         status "  说明:"
         status "  - qwen2.5:7b 仅需 GGML_VK_DISABLE_F16=1 即可正常输出"
